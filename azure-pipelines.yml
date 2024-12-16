@@ -12,7 +12,7 @@ stages:
   - job: 'Build'
     displayName: 'Build job'
     pool:
-      vmImage: 'ubuntu-20.04'
+      name: 'aleksliepool22'
     steps:
     - script: |
         docker --version
@@ -35,7 +35,7 @@ stages:
   - job: 'Deploy'
     displayName: 'Deploy job'
     pool:
-      vmImage: 'ubuntu-20.04'
+      name: 'aleksliepool22'
     variables:
     - group: Release
     steps:
