@@ -17,6 +17,10 @@ stages:
     - script: |
         docker --version
       displayName: 'Check Docker Version'
+    - script: |
+        echo "Checking remote URL..."
+        git remote -v
+      displayName: 'Verify remote URL'
     - task: Docker@2
       displayName: 'Build and push the image to container registry'
       inputs:
