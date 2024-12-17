@@ -20,8 +20,11 @@ stages:
     - script: |
         echo "Checking remote URL..."
         git remote -v
-        export DOCKER_BUILDKIT=1
-      displayName: 'Verify remote URL and set buildkit'
+      displayName: 'Verify remote URL'
+    - powershell: |
+        Write-Host "Setting DOCKER_BUILDKIT environment variable..."
+        [System.Environment]::SetEnvironmentVariable('DOCKER_BUILDKIT', '1', [System.EnvironmentVariableTarget]::Process)
+      displayName: 'Set DOCKER_BUILDKIT variable'
     - task: Docker@2
       displayName: 'Build and push the image to container registry'
       inputs:
