@@ -20,11 +20,8 @@ stages:
     - script: |
         echo "Checking remote URL..."
         git remote -v
-      displayName: 'Verify remote URL'
-    - script: |
         export DOCKER_BUILDKIT=1
-        docker build -t myimage .
-      displayName: 'Build Docker image'
+      displayName: 'Verify remote URL and set buildkit'
     - task: Docker@2
       displayName: 'Build and push the image to container registry'
       inputs:
